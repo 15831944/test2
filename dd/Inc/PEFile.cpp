@@ -1,0 +1,26 @@
+// PEFile.cpp: implementation of the CPEFile class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "PEFile.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+using namespace Leaf::PEPlus;
+CPEFile::CPEFile()
+{
+
+}
+
+CPEFile::~CPEFile()
+{
+
+}

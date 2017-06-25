@@ -1,0 +1,402 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\dd.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\dd.ico"
+IDI_ICON1               ICON                    "res\\search1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 305, 175
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 dd"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         151,IDC_STATIC_PIG,"Static",SS_BITMAP,7,7,20,20
+END
+
+IDD_DD_DIALOG DIALOGEX 0, 0, 320, 203
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "代码测试"
+CLASS "dd"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Button1",IDC_BUTTON1,11,26,54,24
+    GROUPBOX        "",IDC_STATIC_TEST1,6,6,72,186
+    PUSHBUTTON      "Button2",IDC_BUTTON2,11,65,54,24
+    PUSHBUTTON      "Button3",IDC_BUTTON3,11,104,54,24
+    PUSHBUTTON      "Button4",IDC_BUTTON4,11,143,54,24
+    CONTROL         "",IDC_STATIC_DIALOG,"Static",SS_GRAYRECT | WS_TABSTOP,84,10,231,182
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 232, 186
+STYLE DS_SETFONT | WS_CHILD | WS_BORDER
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 232, 186
+STYLE DS_SETFONT | WS_CHILD | WS_BORDER
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    PUSHBUTTON      "文件测试",IDC_BUTTON1,33,24,45,18,BS_FLAT
+    PUSHBUTTON      "橡皮筋",IDC_BUTTON2,34,49,45,20,BS_FLAT
+    PUSHBUTTON      "...",IDC_BUTTON3,33,75,45,20,BS_FLAT
+    PUSHBUTTON      "...",IDC_BUTTON4,34,103,45,18,BS_FLAT
+    PUSHBUTTON      "",IDC_BUTTON5,34,131,45,18,BS_FLAT
+    PUSHBUTTON      "遮屏测试",IDC_BUTTON6,93,24,45,18,BS_FLAT
+    PUSHBUTTON      "罗盘测试",IDC_BUTTON7,93,49,45,20,BS_FLAT
+    PUSHBUTTON      "...",IDC_BUTTON8,93,75,45,20,BS_FLAT
+    PUSHBUTTON      "...",IDC_BUTTON9,93,103,45,18,BS_FLAT
+    PUSHBUTTON      "",IDC_BUTTON10,93,131,45,18,BS_FLAT
+    PUSHBUTTON      "日历测试",IDC_BUTTON11,153,23,45,18,BS_FLAT
+    PUSHBUTTON      "摄像头",IDC_BUTTON12,153,50,45,18,BS_FLAT
+    PUSHBUTTON      "控制台",IDC_BUTTON13,153,75,45,20,BS_FLAT
+END
+
+IDD_DIALOG3 DIALOGEX 0, 0, 232, 186
+STYLE DS_SETFONT | WS_CHILD | WS_BORDER
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+END
+
+IDD_DIALOG4 DIALOGEX 0, 0, 232, 186
+STYLE DS_SETFONT | WS_CHILD | WS_BORDER
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+END
+
+IDD_CALENDAR_DIALOG DIALOG  0, 0, 412, 269
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "日历窗口测试"
+FONT 9, "宋体"
+BEGIN
+END
+
+IDD_OUTPUT_DIALOG DIALOGEX 0, 0, 199, 156
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+END
+
+IDD_RECTRACKER_DIALOG DIALOG  0, 0, 415, 270
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "橡皮筋测试"
+FONT 9, "宋体"
+BEGIN
+END
+
+IDD_COMPASS_DIALOG DIALOGEX 0, 0, 322, 203
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "罗盘测试"
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    LTEXT           "",IDC_COMPASS,15,29,140,118,SS_NOTIFY
+END
+
+IDD_PREVIEW_DIALOG DIALOG  0, 0, 376, 259
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "",IDC_STATIC_RECT_PREVIEW,2,2,371,255
+END
+
+IDD_FINDCOLOR_DIALOG DIALOG  0, 0, 266, 216
+STYLE DS_SETFONT | WS_POPUP
+FONT 9, "宋体"
+BEGIN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "FileDescription", "dd Microsoft 基础类应用程序"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "dd"
+            VALUE "LegalCopyright", "版权所有 (C) 2011"
+            VALUE "OriginalFilename", "dd.EXE"
+            VALUE "ProductName", "dd 应用程序"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 298
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+
+    IDD_DD_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 318
+        VERTGUIDE, 78
+        VERTGUIDE, 84
+        VERTGUIDE, 315
+        BOTTOMMARGIN, 200
+        HORZGUIDE, 10
+        HORZGUIDE, 192
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        RIGHTMARGIN, 231
+        BOTTOMMARGIN, 185
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        RIGHTMARGIN, 230
+        VERTGUIDE, 34
+        VERTGUIDE, 80
+        VERTGUIDE, 93
+        VERTGUIDE, 138
+        VERTGUIDE, 153
+        VERTGUIDE, 198
+        BOTTOMMARGIN, 184
+        HORZGUIDE, 23
+        HORZGUIDE, 42
+        HORZGUIDE, 49
+        HORZGUIDE, 69
+        HORZGUIDE, 75
+        HORZGUIDE, 95
+        HORZGUIDE, 103
+        HORZGUIDE, 121
+        HORZGUIDE, 130
+        HORZGUIDE, 149
+    END
+
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 230
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_DIALOG4, DIALOG
+    BEGIN
+        RIGHTMARGIN, 230
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_CALENDAR_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 409
+        BOTTOMMARGIN, 266
+    END
+
+    IDD_OUTPUT_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 198
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_RECTRACKER_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 414
+        BOTTOMMARGIN, 268
+    END
+
+    IDD_COMPASS_DIALOG, DIALOG
+    BEGIN
+        VERTGUIDE, 5
+        VERTGUIDE, 166
+        VERTGUIDE, 317
+        TOPMARGIN, 1
+        HORZGUIDE, 5
+        HORZGUIDE, 198
+    END
+
+    IDD_PREVIEW_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 375
+        VERTGUIDE, 2
+        VERTGUIDE, 373
+        HORZGUIDE, 2
+        HORZGUIDE, 257
+    END
+
+    IDD_FINDCOLOR_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 264
+        BOTTOMMARGIN, 215
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\Button\\1.bmp"
+IDB_BITMAP2             BITMAP                  "res\\Button\\2.bmp"
+IDB_BITMAP3             BITMAP                  "res\\Button\\3.bmp"
+IDB_BITMAP4             BITMAP                  "res\\Button\\4.bmp"
+IDB_BITMAP5             BITMAP                  "res\\Button\\5.bmp"
+IDB_BACKGROUND          BITMAP                  "res\\Buttom\\bk.bmp"
+IDB_BITMAP6             BITMAP                  "res\\Button\\报警灯-1.bmp"
+IDB_BITMAP7             BITMAP                  "res\\Button\\报警灯-2.bmp"
+IDB_BITMAP_BKGND        BITMAP                  "res\\Buttom\\background.bmp"
+IDB_BITMAP8             BITMAP                  "res\\Button\\报警灯-3.bmp"
+IDB_BITMAP_PIG          BITMAP                  "res\\Top\\pig.bmp"
+IDB_HEADER_BAR          BITMAP                  "res\\Top\\header.bmp"
+IDB_BITMAP_PAGE         BITMAP                  "res\\Buttom\\280.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "AFX_MENU1"
+    BEGIN
+        MENUITEM "Menu1",                       ID_AFX_MENU2
+        MENUITEM "Menu2",                       ID_AFX_MENU3
+        MENUITEM "Menu3",                       ID_AFX_MENU4
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 dd(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\dd.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
