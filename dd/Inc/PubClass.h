@@ -15,9 +15,12 @@
 #include <cctype>					//ctype
 
 #include <vector>
+#include <list>
 #include <map>
 #include <string> 
 #include <afxconv.h>					//USES_CONVERSION: W2A
+
+#include "internal.h"
 
 #include <mmsystem.h>
 #pragma comment(lib,"winmm.lib")

@@ -27,6 +27,7 @@ namespace Leaf
 			virtual ~File();
 			
 		public:
+			static bool IsDirExists(const char* pszFilePath);
 
 			static CString GetTitle(const CString& strName);    //获取文件名，不含扩展名
 			static CString GetName(const CString& strName);     //获取文件名，包含扩展名

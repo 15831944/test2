@@ -26,6 +26,8 @@
 	typedef unsigned __int32				v_uint32_t;
 	typedef signed   __int64				v_int64_t;
 	typedef unsigned __int64				v_uint64_t;
+
+
 #elif defined  _GCC_
 	typedef int8_t							v_int8_t;
 	typedef uint8_t							v_uint8_t;

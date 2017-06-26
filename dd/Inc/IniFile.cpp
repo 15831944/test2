@@ -11,7 +11,7 @@ using namespace Leaf::IO;
 CIniFile::CIniFile()
 {
 	m_sFilename = _T("");
-	m_sFilePath = CDirectory::GetAppPath(); 
+	m_sFilePath = CDirectory::GetAppPath().c_str(); 
 	m_sFilename = m_sFilePath + DefaultConfig;
 }
 

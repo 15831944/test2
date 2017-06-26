@@ -1,15 +1,7 @@
-// Directory.h: interface for the CDirectory class.
-//
-//////////////////////////////////////////////////////////////////////
+#ifndef __DIRECTORY_H__
+#define __DIRECTORY_H__
 
-#if !defined(AFX_DIRECTORY_H__3C9C7C30_E0D5_4F5A_9F82_E9B6173DEC31__INCLUDED_)
-#define AFX_DIRECTORY_H__3C9C7C30_E0D5_4F5A_9F82_E9B6173DEC31__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
-
-
+using namespace std;
 namespace Leaf
 {
 	namespace IO
@@ -21,16 +13,20 @@ namespace Leaf
 			virtual ~CDirectory();
 			
 		public:
-			static CString  GetAppPath();
-			static BOOL IsFileExists(LPCTSTR lpszFileName);
-			static bool FolderExists(CString s);
-			static bool CreateDir(CString p);
-			static bool DeleteDirectory(TCHAR* sDirName); 
-			static bool SelectMenu(HWND hWnd,TCHAR*pPath,TCHAR*pDisplayString);
+			static std::string		GetAppPath();
+
+			static bool				IsDirExists(const char* pszDirName);
+
+			static bool				CreateDirectory(const char* pszDirPath, bool bFlag = false);
+			static bool				DeleteDirectory(const char* pszDirPath, bool bFlag = false); 
+
+			static bool				CopyDirectory(const char* pszSrcDirPath, const char* pszDescDirPath);
+
+			static bool				GetDirSize(const char* pszDirPath, v_uint64_t* pDirSize);
+		protected:
+			bool					EnumDirectory(const char* pszDirPath, std::list<std::string> &vecDirList, bool bFlag = false);
 		};
 	}
 }
 
-
-
-#endif // !defined(AFX_DIRECTORY_H__3C9C7C30_E0D5_4F5A_9F82_E9B6173DEC31__INCLUDED_)
+#endif 
