@@ -21,7 +21,9 @@ public:
 	HRESULT 				PreviewImages(int iDeviceID , HWND hWnd);
 	HRESULT					CaptureImages(CString inFileName);
 	void					ConfigCameraPin(HWND hwndParent);
-
+	
+	HRESULT					GetCaptureRatio(IBaseFilter* pCapFilter, ICaptureGraphBuilder2* pBuild);
+	
 protected:
 	HRESULT					InitCaptureGraphBuilder();
 	bool					BindFilter(int deviceId,IBaseFilter **pFilter);

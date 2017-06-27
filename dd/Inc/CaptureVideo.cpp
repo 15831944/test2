@@ -282,3 +282,34 @@ void CCaptureVideo::ConfigCameraPin(HWND hwndParent)
 	}
 	m_pMC->Run();
 }
+
+HRESULT CCaptureVideo::GetCaptureRatio(IBaseFilter* pCapFilter, ICaptureGraphBuilder2* pBuild)
+{
+	int nSize = 0;
+	int nCount = 0;
+	int nIndex = 0;
+	
+	HRESULT hr;
+	SmartPtr<IAMStreamConfig> pam;
+	
+	hr = pBuild->FindInterface(&PIN_CATEGORY_CAPTURE, &MEDIATYPE_Video, pCapFilter, IID_IAMStreamConfig, reinterpret_cast<void**>(&pam));
+	hr = pam->GetNumberOfCapabilities(&nCount, &nSize);
+	
+	if(sizeof(VIDEO_STREAM_CONFIG_CAPS) == nSize)
+	{
+		for(nIndex=0; nIndex<nCount; nIndex++)
+		{
+			AM_MEDIA_TYPE* pmmt;
+			VIDEO_STREAM_CONFIG_CAPS scc; 
+			
+			hr = pam->GetStreamCaps(nIndex, &pmmt, reinterpret_cast<BYTE*>(&scc));
+			if(pmmt->formattype == FORMAT_VideoInfo)
+			{
+				 VIDEOINFOHEADER* pvih = reinterpret_cast<VIDEOINFOHEADER*>(pmmt->pbFormat);
+				 int nFrame = pvih->AvgTimePerFrame;	//采集的帧率
+			}
+		}		
+	}
+	
+	return (hr);
+}
