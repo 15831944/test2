@@ -403,7 +403,8 @@ void CDdDlg::InitSubDlg()
 }
 
 void CDdDlg::InitInfo()
-{}
+{
+}
 
 void CDdDlg::DrawTitle(CDC* pDC)
 {

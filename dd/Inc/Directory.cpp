@@ -51,8 +51,52 @@ std::string CDirectory::GetAppPath()
 	return strAppPath;
 }
 
+bool CDirectory::IsDirectory(const char* pszFilePath)
+{
+	bool bRet = false;
 
-bool CDirectory::IsDirExists(const char* pszDirName)
+	if (pszFilePath == NULL)
+	{
+		return false;
+	}
+
+#ifdef _WIN_32_
+	DWORD dwState;
+	dwState = GetFileAttributes(pszFilePath);
+	if (dwState == INVALID_FILE_ATTRIBUTES )
+	{
+		return false;
+	}
+
+	if (dwState&FILE_ATTRIBUTE_DIRECTORY)
+	{
+		bRet = true;
+	}
+	else
+	{
+		bRet = false;
+	}
+#else
+	struct stat S_stat;
+	if (lstat(pszFilePath, &S_stat) < 0) 
+	{
+		return false;
+	}
+
+	if (S_ISDIR(S_stat.st_mode))
+	{
+		bRet = true;
+	}
+	else
+	{
+		bRet = false;
+	}
+#endif
+
+	return bRet;
+}
+
+bool CDirectory::IsDirExists(const char* pszFilePath)
 {
 	bool bRet = false;
 
@@ -243,5 +287,129 @@ bool CDirectory::EnumDirectory(const char* pszDirPath, std::list<std::string> &v
 {
 	bool bRet = false;
 
+#ifdef _WIN_32_
+	HANDLE  hFindFile;
+	WIN32_FIND_DATA fd;
+
+	char szFindPath[MAX_PATH] = {0};
+
+	hFindFile = FindFirstFile(szFindPath, &fd);
+	if (hFindFile == NULL || hFindFile == INVALID_HANDLE_VALUE)
+	{
+		return false;
+	}
+
+	do 
+	{
+		if (strcmp(fd.cFileName, _T(".")) == 0 || strcmp(fd.cFileName, _T("..")) == 0)
+		{
+			continue;
+		}
+
+		if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
+		{
+			if (!bFlag)
+			{
+			}
+			else
+			{
+
+			}
+		}
+		else
+		{
+
+		}
+	} while (FindNextFile(hFindFile, &fd));
+
+	if (hFindFile)
+	{
+		FindClose(hFindFile);
+		hFindFile = NULL;
+	}
+#else
+#endif
+
 	return bRet;
+}
+
+bool CDirectory::ParseDirPath1(const char* pszDirPath, std::list<std::string> &vecDirList)
+{
+	bool bRet = false;
+
+	std::list<std::string> vecPartList;
+
+	if (pszDirPath == NULL)
+	{
+		return false;
+	}
+
+	if (!ParseDirPath2(pszDirPath, vecPartList))
+	{
+		return false;
+	}
+
+	if (vecPartList.size() == 0)
+	{
+		return false;
+	}
+}
+
+bool CDirectory::ParseDirPath2(const char* pszDirPath, std::list<std::string> &vecPartList)
+{
+	bool bRet = false;
+
+	int nlen = 0;
+	int npos = 0;
+
+	char* p = NULL;
+	string strString;
+	char szPath[0x20] = {0};
+
+#ifdef _WIN_32_
+	char* pszChar = _T("\\");
+#else
+#endif
+
+	char* pSrcDirPath = (char*)pszDirPath;
+	if (pSrcDirPath == NULL)
+	{
+		return false;
+	}
+
+	nlen = strlen(pSrcDirPath);
+	if (nlen <= 0)
+	{
+		return false;
+	}
+
+	while(nlen > 0)
+	{
+		strString = "";
+		memset(szPath, 0x0, 0x20);
+
+		p = strstr(pSrcDirPath, pszChar);
+		if (p == NULL)
+		{
+			strString = pSrcDirPath;
+			vecPartList.push_back(strString);
+			break;
+		}
+
+		npos = p - pSrcDirPath;
+		if (npos == -1)
+		{
+			continue;
+		}
+
+		memcpy(szPath, pSrcDirPath, npos);
+
+		strString = szPath;
+		vecPartList.push_back(strString);
+
+		nlen = nlen - (npos+1);
+		pSrcDirPath  = pSrcDirPath + (npos+1);
+	}
+
+	return true;
 }
