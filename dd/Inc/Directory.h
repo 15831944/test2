@@ -28,7 +28,7 @@ namespace Leaf
 		protected:
 			bool					EnumDirectory(const char* pszDirPath, std::list<std::string> &vecDirList, bool bFlag = false);
 
-			bool					ParseDirPath1(const char* pszDirPath, std::list<std::string> &vecDirList);
+//			bool					ParseDirPath1(const char* pszDirPath, DIR_STRUCT* pDirList);
 			bool					ParseDirPath2(const char* pszDirPath, std::list<std::string> &vecPartList);
 		};
 	}

@@ -333,11 +333,18 @@ bool CDirectory::EnumDirectory(const char* pszDirPath, std::list<std::string> &v
 	return bRet;
 }
 
-bool CDirectory::ParseDirPath1(const char* pszDirPath, std::list<std::string> &vecDirList)
+/*
+bool CDirectory::ParseDirPath1(const char* pszDirPath, DIR_STRUCT* pDirList)
 {
 	bool bRet = false;
+	v_uint32_t uIndex = 0;
 
+	std::string strfield;
 	std::list<std::string> vecPartList;
+	std::list<std::string>::iterator iterPartList;
+
+	DIR_STRUCT *pPrevDir = NULL;
+	DIR_STRUCT *pNextDir = NULL;
 
 	if (pszDirPath == NULL)
 	{
@@ -353,8 +360,57 @@ bool CDirectory::ParseDirPath1(const char* pszDirPath, std::list<std::string> &v
 	{
 		return false;
 	}
-}
+	else
+	{
+#ifndef _WIN_32_
+		DIR_STRUCT* pDirStruct = new DIR_STRUCT;
+		if (pDirStruct == NULL)
+		{
+			return false;
+		}
+		memset(pDirStruct, 0x0, sizeof(DIR_STRUCT));
 
+		strcpy(pDirStruct->szDirName, "root");
+		strcpy(pDirStruct->szDirPath, "/");
+
+		pDirStruct->uIndex = 0;
+
+		pDirStruct->prev = NULL;
+		pDirStruct->next = NULL;
+#endif
+	}
+
+	iterPartList = vecPartList.begin();
+	for (iterPartList; iterPartList != vecPartList.end(); iterPartList++, uIndex++)
+	{
+		strfield = *iterPartList;
+
+		DIR_STRUCT* pDirStruct = new DIR_STRUCT;
+		if (pDirStruct == NULL)
+		{
+			continue;
+		}
+		memset(pDirStruct, 0x0, sizeof(DIR_STRUCT));
+
+#ifdef _WIN_32_
+		if (uIndex == 0)
+		{
+			strcpy(pDirStruct->szDirName, strfield.c_str());
+			strfield += "\\";
+			strcpy(pDirStruct->szDirPath, strfield.c_str());
+
+			pDirStruct->uIndex = uIndex;
+
+			pDirStruct->prev = NULL;
+			pDirStruct->next = NULL;
+
+			pDirList->prev = pDirStruct;
+
+		}
+#endif
+	}
+}
+*/
 bool CDirectory::ParseDirPath2(const char* pszDirPath, std::list<std::string> &vecPartList)
 {
 	bool bRet = false;
@@ -369,6 +425,7 @@ bool CDirectory::ParseDirPath2(const char* pszDirPath, std::list<std::string> &v
 #ifdef _WIN_32_
 	char* pszChar = _T("\\");
 #else
+	char* pszChar = _T("/");
 #endif
 
 	char* pSrcDirPath = (char*)pszDirPath;
