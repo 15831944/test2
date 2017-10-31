@@ -39,11 +39,4 @@
 #include "MemDC.h"
 #include "SaveDC.h"
 #include "Picture.h"
-
-typedef enum tagMessageType{
-	M_EMPTYTYPE					= 0,
-	M_FULLSCREEN_CTRL			= 1,
-	M_MULTISCREEN_CTRL			= 2
-}UKH_MESSAGE_TYPE, *PUKH_MESSAGE_TYPE;
-
 #endif

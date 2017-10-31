@@ -318,19 +318,19 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
-				RelativePath=".\res\Button\1.bmp"
-				>
-			</File>
-			<File
 				RelativePath="res\1.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Button\2.bmp"
+				RelativePath=".\res\Button\1.bmp"
 				>
 			</File>
 			<File
 				RelativePath="res\2.bmp"
+				>
+			</File>
+			<File
+				RelativePath=".\res\Button\2.bmp"
 				>
 			</File>
 			<File
@@ -346,15 +346,11 @@
 				>
 			</File>
 			<File
-				RelativePath="res\4.bmp"
-				>
-			</File>
-			<File
 				RelativePath=".\res\Button\4.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Button\5.bmp"
+				RelativePath="res\4.bmp"
 				>
 			</File>
 			<File
@@ -362,7 +358,7 @@
 				>
 			</File>
 			<File
-				RelativePath="res\background.bmp"
+				RelativePath=".\res\Button\5.bmp"
 				>
 			</File>
 			<File
@@ -370,15 +366,19 @@
 				>
 			</File>
 			<File
+				RelativePath="res\background.bmp"
+				>
+			</File>
+			<File
 				RelativePath=".\res\Button\bitmap9.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\bk.bmp"
+				RelativePath=".\res\Buttom\bk.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Buttom\bk.bmp"
+				RelativePath="res\bk.bmp"
 				>
 			</File>
 			<File
@@ -418,11 +418,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\res\Top\pig.bmp"
+				RelativePath="res\pig.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\pig.bmp"
+				RelativePath=".\res\Top\pig.bmp"
 				>
 			</File>
 			<File
@@ -459,14 +459,6 @@
 			</File>
 			<File
 				RelativePath=".\Dialog\DlgCompassCtrl.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Dialog\DlgOutPutCtrl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Dialog\DlgOutPutCtrl.h"
 				>
 			</File>
 			<File
@@ -669,6 +661,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Control\CWnd\OutPutWndCtrl.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\CWnd\OutPutWndCtrl.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Control\CWnd\ScrollWndMsg.cpp"
 					>
 				</File>
@@ -734,43 +734,43 @@
 			Name="Page"
 			>
 			<File
-				RelativePath=".\Dialog\Page.cpp"
+				RelativePath=".\Page\Page.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page.h"
+				RelativePath=".\Page\Page.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page1.cpp"
+				RelativePath=".\Page\Page1.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page1.h"
+				RelativePath=".\Page\Page1.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page2.cpp"
+				RelativePath=".\Page\Page2.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page2.h"
+				RelativePath=".\Page\Page2.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page3.cpp"
+				RelativePath=".\Page\Page3.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page3.h"
+				RelativePath=".\Page\Page3.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page4.cpp"
+				RelativePath=".\Page\Page4.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Dialog\Page4.h"
+				RelativePath=".\Page\Page4.h"
 				>
 			</File>
 		</Filter>

@@ -6,10 +6,10 @@
 #endif // _MSC_VER > 1000
 
 
-#include "Dialog/Page1.h"
-#include "Dialog/Page2.h"
-#include "Dialog/Page3.h"
-#include "Dialog/Page4.h"
+#include "Page/Page1.h"
+#include "Page/Page2.h"
+#include "Page/Page3.h"
+#include "Page/Page4.h"
 
 #include "Control/CButton/xSkinButton.h"
 #include "Control/CWnd/dialogheader.h"

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "DlgOutPutCtrl.h"
-
+#include "../Control/CWnd/OutPutWndCtrl.h"
 class CDlgPreViewCtrl : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgPreViewCtrl)
@@ -9,7 +8,7 @@ public:
 	CDlgPreViewCtrl(CWnd* pParent = NULL);  
 	virtual ~CDlgPreViewCtrl();
 
-	int							GetViewerNums()		{ return m_iCurWndNum; }
+	int							GetViewerNums()		{ return m_nCurWndNum; }
 	
 public:
 	enum { IDD = IDD_PREVIEW_DIALOG };
@@ -19,21 +18,23 @@ protected:
 	virtual BOOL				OnInitDialog();
 	DECLARE_MESSAGE_MAP()
 	afx_msg	LRESULT				OnSwitchMultiWnd(WPARAM wParam, LPARAM lParam);
-
-	void						Init();
-	void						InitCtrl();
-	void						InitInfo();
-
-	void						ArrangeOutputs(int iNumber);
+	
 protected:
-	CDlgOutPutCtrl				m_dlgOutPut[MAX_OUTPUTS_CTRL];
+	BOOL						Init();
+	BOOL						InitCtrl();
+	BOOL						InitInfo();
+
+	void						ArrangeOutputs(int nNumber);
+
+protected:
+	COutPutWndCtrl				m_dlgOutPut[MAX_OUTPUTS_CTRL];
 
 private:
-	CRect						m_rectPreviewBG;
+	CRect						m_rcPreviewBG;
 
-	int							m_iCurScreenWidth;
-	int							m_iCurScreenHeight;
+	int							m_nCurScreenWidth;
+	int							m_nCurScreenHeight;
 
-	int							m_iCurWndNum;
-	int							m_iCurWndIndex;
+	int							m_nCurWndNum;
+	int							m_nCurWndIndex;
 };
