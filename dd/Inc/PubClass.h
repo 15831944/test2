@@ -1,11 +1,6 @@
 #ifndef __PUB_CLASS_H__
 #define __PUB_CLASS_H__
 
-#define		MAX_OUTPUTS_CTRL			64
-#define		OUTPUT_INTERVAL				4
-
-#define		WM_SWITCHMULTI_CTRL			WM_USER + 0x0101
-
 #include <io.h>
 #include <math.h>
 #include <stdio.h>
@@ -39,4 +34,5 @@
 #include "MemDC.h"
 #include "SaveDC.h"
 #include "Picture.h"
+
 #endif

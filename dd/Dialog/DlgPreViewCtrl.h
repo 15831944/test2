@@ -8,15 +8,16 @@ public:
 	CDlgPreViewCtrl(CWnd* pParent = NULL);  
 	virtual ~CDlgPreViewCtrl();
 
-	int							GetViewerNums()		{ return m_nCurWndNum; }
-	
 public:
 	enum { IDD = IDD_PREVIEW_DIALOG };
 
 protected:
 	virtual void				DoDataExchange(CDataExchange* pDX);   
 	virtual BOOL				OnInitDialog();
+
+	afx_msg int					OnCreate(LPCREATESTRUCT lpCreateStruct);
 	DECLARE_MESSAGE_MAP()
+
 	afx_msg	LRESULT				OnSwitchMultiWnd(WPARAM wParam, LPARAM lParam);
 	
 protected:
@@ -24,10 +25,10 @@ protected:
 	BOOL						InitCtrl();
 	BOOL						InitInfo();
 
-	void						ArrangeOutputs(int nNumber);
+	BOOL						ArrangeOutputs(UKH_WND_TYPE hWndType, DWORD dwChannels);
 
 protected:
-	COutPutWndCtrl				m_dlgOutPut[MAX_OUTPUTS_CTRL];
+	COutPutWndCtrl*				m_pOutPutArray;
 
 private:
 	CRect						m_rcPreviewBG;
@@ -35,6 +36,6 @@ private:
 	int							m_nCurScreenWidth;
 	int							m_nCurScreenHeight;
 
-	int							m_nCurWndNum;
-	int							m_nCurWndIndex;
+	DWORD						m_dwOutPutSize;
+	DWORD						m_dwOutPutWndIndex;
 };

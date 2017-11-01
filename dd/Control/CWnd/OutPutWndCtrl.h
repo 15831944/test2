@@ -1,10 +1,15 @@
 #pragma once
 
-typedef enum tagMessageType{
+#define	MAX_OUTPUTS_CTRL		64
+#define	OUTPUT_INTERVAL			4
+
+#define	WM_SWITCHMULTI_CTRL		WM_USER + 0x0101
+
+typedef enum tagWndType{
 	M_EMPTYTYPE					= 0,
 	M_FULLSCREEN_CTRL			= 1,
 	M_MULTISCREEN_CTRL			= 2
-}UKH_MESSAGE_TYPE, *PUKH_MESSAGE_TYPE;
+}UKH_WND_TYPE;
 
 class COutPutWndCtrl : public CWnd
 {

@@ -6,11 +6,11 @@ IMPLEMENT_DYNAMIC(CDlgPreViewCtrl, CDialog)
 CDlgPreViewCtrl::CDlgPreViewCtrl(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgPreViewCtrl::IDD, pParent)
 {
-	m_nCurWndNum   = 0;
-	m_nCurWndIndex = 0;
+	m_dwOutPutSize      = 16;
+	m_dwOutPutWndIndex  = 0;
 
-	m_nCurScreenWidth  = -1;
-	m_nCurScreenHeight = -1;
+	m_nCurScreenWidth   = GetSystemMetrics(SM_CXSCREEN);
+	m_nCurScreenHeight  = GetSystemMetrics(SM_CYSCREEN);
 }
 
 CDlgPreViewCtrl::~CDlgPreViewCtrl()
@@ -23,8 +23,9 @@ void CDlgPreViewCtrl::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CDlgPreViewCtrl, CDialog)
-	ON_MESSAGE(WM_SWITCHMULTI_CTRL,		OnSwitchMultiWnd)
+	ON_WM_CREATE()
 	ON_WM_ERASEBKGND()
+	ON_MESSAGE(WM_SWITCHMULTI_CTRL,		OnSwitchMultiWnd)
 END_MESSAGE_MAP()
 
 BOOL CDlgPreViewCtrl::OnInitDialog()
@@ -36,8 +37,44 @@ BOOL CDlgPreViewCtrl::OnInitDialog()
 		return FALSE;
 	}
 
-	//ModifyStyle(0, WS_CLIPCHILDREN);
 	return TRUE; 
+}
+
+int CDlgPreViewCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	DWORD dwIndex = 0;
+	DWORD dwStyle = 0;
+
+	CRect rcClient;
+	GetClientRect(&rcClient);
+
+	if (CDialog::OnCreate(lpCreateStruct) == -1)
+	{
+		return -1;
+	}
+
+	m_pOutPutArray = new COutPutWndCtrl[m_dwOutPutSize];
+	if (m_pOutPutArray == NULL)
+	{
+		return -1;
+	}
+
+	dwStyle = WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_VISIBLE;
+	for (dwIndex=0; dwIndex<m_dwOutPutSize; dwIndex++)
+	{
+		if (!m_pOutPutArray[dwIndex].Create(dwStyle, rcClient, this, dwIndex+1))
+		{
+			continue;
+		}
+		
+		m_pOutPutArray[dwIndex].SetWndChannel(dwIndex+1);
+
+		m_pOutPutArray[dwIndex].SetWndBorder(TRUE, RGB(10,160,200));
+		m_pOutPutArray[dwIndex].SetHoverColor(RGB(255, 0, 0), RGB(255,255,255));
+	}
+
+	m_rcPreviewBG.CopyRect(rcClient);
+	return 0;
 }
 
 BOOL CDlgPreViewCtrl::Init()
@@ -57,35 +94,7 @@ BOOL CDlgPreViewCtrl::Init()
 
 BOOL CDlgPreViewCtrl::InitCtrl()
 {
-	int nIndex = 0;
-	DWORD dwStyle = 0;
-	DWORD dwWndId = 0;
-
-	CRect rcOutput;
-	CRect rcClient;
-	GetClientRect(&rcClient);
-
-	m_nCurScreenWidth  = GetSystemMetrics(SM_CXSCREEN);
-	m_nCurScreenHeight = GetSystemMetrics(SM_CYSCREEN);
-
-	rcOutput.CopyRect(&rcClient);
-	dwStyle = WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_VISIBLE;
-
-	for (nIndex=0; nIndex<MAX_OUTPUTS_CTRL; nIndex++)
-	{
-		if (!m_dlgOutPut[nIndex].Create(dwStyle, rcOutput, this, nIndex+1))
-		{
-			continue;
-		}
-
-		m_dlgOutPut[nIndex].SetWndChannel(nIndex+1);
-		m_dlgOutPut[nIndex].SetWndBorder(TRUE, RGB(10,160,200));
-		m_dlgOutPut[nIndex].SetHoverColor(RGB(255, 0, 0), RGB(255,255,255));
-	}
-
-	m_nCurWndNum = 32;
-	GetClientRect(&m_rcPreviewBG);
-	ArrangeOutputs(m_nCurWndNum);
+	ArrangeOutputs(M_MULTISCREEN_CTRL, m_dwOutPutSize);
 	return TRUE;
 }
 
@@ -97,74 +106,102 @@ BOOL CDlgPreViewCtrl::InitInfo()
 LRESULT CDlgPreViewCtrl::OnSwitchMultiWnd(WPARAM wParam, LPARAM lParam)
 {
 	DWORD dwCurChannel = 0;
+	UKH_WND_TYPE hWndType = M_EMPTYTYPE;
 
 	switch(wParam)
 	{
 	case M_FULLSCREEN_CTRL:
 		{
 			dwCurChannel = lParam;
+			hWndType = M_FULLSCREEN_CTRL;
 		}
 		break;
 	case M_MULTISCREEN_CTRL:
 		{
-			dwCurChannel = lParam;
+			dwCurChannel = m_dwOutPutSize;
+			hWndType = M_MULTISCREEN_CTRL;
 		}
 		break;
 	}
 
-	//ArrangeOutputs(m_nCurWndNum);
+	ArrangeOutputs(hWndType, dwCurChannel);
 	return 0;
 }
 
-void CDlgPreViewCtrl::ArrangeOutputs(int nNumber)
+BOOL CDlgPreViewCtrl::ArrangeOutputs(UKH_WND_TYPE hWndType, DWORD dwChannels)
 {
-	int nIndex = 0;
-	int nPlayIndex = 0;
-
 	int nWidth   = 0;
 	int nHeight  = 0;
 	int nSqrtNum = 0;
+	int nPlayIndex = 0;
 
-	if (nNumber == 0)
+	DWORD dwIndex = 0;
+	DWORD dwWndChannel = 0;
+
+	if (m_pOutPutArray == NULL)
 	{
-		return;
+		return FALSE;
 	}
 
-	nSqrtNum = (int)sqrt((double)nNumber);
-	for (nIndex=0; nIndex<MAX_OUTPUTS_CTRL; nIndex++)
+	if (hWndType == M_EMPTYTYPE)
 	{
-		m_dlgOutPut[nIndex].ShowWindow(SW_HIDE);
+		return FALSE;
 	}
 
-	if (0)
+	if (dwChannels == 0)
 	{
-		nWidth = (m_nCurScreenWidth - OUTPUT_INTERVAL*(nSqrtNum-1))/nSqrtNum;
-		nHeight = (m_nCurScreenHeight - OUTPUT_INTERVAL*(nSqrtNum-1))/nSqrtNum;
+		return FALSE;
+	}
 
-		for(nIndex=0; nIndex<nNumber; nIndex++)
+	for (dwIndex=0; dwIndex<m_dwOutPutSize; dwIndex++)
+	{
+		m_pOutPutArray[dwIndex].ShowWindow(SW_HIDE);
+	}
+
+	if (hWndType == M_MULTISCREEN_CTRL)
+	{
+		nSqrtNum = (int)sqrt((double)dwChannels);
+
+		nWidth  = (m_rcPreviewBG.Width() - OUTPUT_INTERVAL*(nSqrtNum-1))/nSqrtNum;
+		nHeight = (m_rcPreviewBG.Height() - OUTPUT_INTERVAL*(nSqrtNum-1))/nSqrtNum;
+
+		for(dwIndex=0; dwIndex<m_dwOutPutSize; dwIndex++)
 		{
-			m_dlgOutPut[nIndex].MoveWindow((nIndex%nSqrtNum)*(nWidth+OUTPUT_INTERVAL), (nIndex/nSqrtNum)*(nHeight+OUTPUT_INTERVAL), nWidth, nHeight, TRUE);
-			m_dlgOutPut[nIndex].ShowWindow(SW_SHOW);
+			dwWndChannel = m_pOutPutArray[dwIndex].GetWndChannel();
+			if (dwWndChannel == 0)
+			{
+				continue;
+			}
+
+			nPlayIndex = dwWndChannel -1;
+			m_pOutPutArray[nPlayIndex].MoveWindow((dwIndex%nSqrtNum)*(nWidth+OUTPUT_INTERVAL), (dwIndex/nSqrtNum)*(nHeight+OUTPUT_INTERVAL), nWidth, nHeight, TRUE);
+			m_pOutPutArray[nPlayIndex].ShowWindow(SW_SHOW);
 		}
 	}
 	else
 	{
-		nWidth = (m_rcPreviewBG.Width() - OUTPUT_INTERVAL*(nSqrtNum-1))/nSqrtNum;
-		nHeight = (m_rcPreviewBG.Height() - OUTPUT_INTERVAL*(nSqrtNum-1))/nSqrtNum;
+		nSqrtNum = 1;
 
-		for(nIndex=0; nIndex<nNumber; nIndex++)
+		nWidth  = m_rcPreviewBG.Width();
+		nHeight = m_rcPreviewBG.Height();
+
+		for(dwIndex=0; dwIndex<m_dwOutPutSize; dwIndex++)
 		{
-			if (0)
+			dwWndChannel = m_pOutPutArray[dwIndex].GetWndChannel();
+			if (dwWndChannel == 0)
 			{
-				nPlayIndex = m_nCurWndIndex;
+				continue;
 			}
-			else
+
+			nPlayIndex = dwWndChannel -1;
+			if (dwChannels == dwWndChannel)
 			{
-				nPlayIndex = nIndex;
+				m_pOutPutArray[nPlayIndex].MoveWindow(m_rcPreviewBG.left, m_rcPreviewBG.top, nWidth, nHeight, TRUE);
+				m_pOutPutArray[nPlayIndex].ShowWindow(SW_SHOW);
+				break;
 			}
-			
-			m_dlgOutPut[nPlayIndex].MoveWindow((nIndex%nSqrtNum)*(nWidth+OUTPUT_INTERVAL), (nIndex/nSqrtNum)*(nHeight+OUTPUT_INTERVAL), nWidth, nHeight, TRUE);
-			m_dlgOutPut[nPlayIndex].ShowWindow(SW_SHOW);
 		}
 	}
+
+	return TRUE;
 }

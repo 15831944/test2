@@ -139,10 +139,12 @@ void COutPutWndCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 
 	if (!m_bWndMultiScreen)
 	{
+		m_bWndMultiScreen = TRUE;
 		::PostMessage(m_pParentWnd->GetSafeHwnd(), WM_SWITCHMULTI_CTRL, M_FULLSCREEN_CTRL, m_dwChannel);
 	}
 	else
 	{
+		m_bWndMultiScreen = FALSE;
 		::PostMessage(m_pParentWnd->GetSafeHwnd(), WM_SWITCHMULTI_CTRL, M_MULTISCREEN_CTRL, m_dwChannel);
 	}
 
