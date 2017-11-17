@@ -73,7 +73,5 @@ private:
 	DWORD						m_dwHoverRet;
 
 	DWORD						m_dwChannel;					//窗口的通道序号
-	int							m_nCurWndNum;						
-
-					
+	int							m_nCurWndNum;					//		
 };

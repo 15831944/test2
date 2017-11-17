@@ -318,19 +318,19 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
-				RelativePath="res\1.bmp"
-				>
-			</File>
-			<File
 				RelativePath=".\res\Button\1.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\2.bmp"
+				RelativePath="res\1.bmp"
 				>
 			</File>
 			<File
 				RelativePath=".\res\Button\2.bmp"
+				>
+			</File>
+			<File
+				RelativePath="res\2.bmp"
 				>
 			</File>
 			<File
@@ -346,15 +346,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\res\Button\4.bmp"
-				>
-			</File>
-			<File
 				RelativePath="res\4.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\5.bmp"
+				RelativePath=".\res\Button\4.bmp"
 				>
 			</File>
 			<File
@@ -362,7 +358,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\res\Buttom\background.bmp"
+				RelativePath="res\5.bmp"
 				>
 			</File>
 			<File
@@ -370,15 +366,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\res\Buttom\background.bmp"
+				>
+			</File>
+			<File
 				RelativePath=".\res\Button\bitmap9.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Buttom\bk.bmp"
+				RelativePath="res\bk.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\bk.bmp"
+				RelativePath=".\res\Buttom\bk.bmp"
 				>
 			</File>
 			<File
@@ -418,11 +418,11 @@
 				>
 			</File>
 			<File
-				RelativePath="res\pig.bmp"
+				RelativePath=".\res\Top\pig.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Top\pig.bmp"
+				RelativePath="res\pig.bmp"
 				>
 			</File>
 			<File
@@ -669,11 +669,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Control\CWnd\ScrollWndMsg.cpp"
+					RelativePath=".\Control\CWnd\ToolbarWndCtrl.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\CWnd\ScrollWndMsg.h"
+					RelativePath=".\Control\CWnd\ToolbarWndCtrl.h"
 					>
 				</File>
 			</Filter>
