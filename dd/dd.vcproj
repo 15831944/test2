@@ -318,19 +318,19 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
-				RelativePath="res\1.bmp"
-				>
-			</File>
-			<File
 				RelativePath=".\res\Button\1.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\2.bmp"
+				RelativePath="res\1.bmp"
 				>
 			</File>
 			<File
 				RelativePath=".\res\Button\2.bmp"
+				>
+			</File>
+			<File
+				RelativePath="res\2.bmp"
 				>
 			</File>
 			<File
@@ -346,15 +346,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\res\Button\4.bmp"
-				>
-			</File>
-			<File
 				RelativePath="res\4.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\5.bmp"
+				RelativePath=".\res\Button\4.bmp"
 				>
 			</File>
 			<File
@@ -362,7 +358,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\res\Buttom\background.bmp"
+				RelativePath="res\5.bmp"
 				>
 			</File>
 			<File
@@ -370,15 +366,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\res\Buttom\background.bmp"
+				>
+			</File>
+			<File
 				RelativePath=".\res\Button\bitmap9.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Buttom\bk.bmp"
+				RelativePath="res\bk.bmp"
 				>
 			</File>
 			<File
-				RelativePath="res\bk.bmp"
+				RelativePath=".\res\Buttom\bk.bmp"
 				>
 			</File>
 			<File
@@ -418,11 +418,11 @@
 				>
 			</File>
 			<File
-				RelativePath="res\pig.bmp"
+				RelativePath=".\res\Top\pig.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\res\Top\pig.bmp"
+				RelativePath="res\pig.bmp"
 				>
 			</File>
 			<File
@@ -474,99 +474,11 @@
 			Name="Inc"
 			>
 			<File
-				RelativePath=".\Inc\Character.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Character.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\CommonFun.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\CommonFun.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Console.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Console.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Container.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Container.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Directory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Directory.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Driver.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Driver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\DtoR.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\File.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\File.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Global.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\IniFile.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\IniFile.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Inc\internal.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Inc\MemDC.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\PEFile.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\PEFile.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Picture.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Inc\Picture.h"
 				>
 			</File>
 			<File
@@ -582,10 +494,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Inc\String.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Inc\SubFrom.cpp"
 				>
 			</File>
@@ -593,30 +501,178 @@
 				RelativePath=".\Inc\SubFrom.h"
 				>
 			</File>
-			<File
-				RelativePath=".\Inc\SystemUtility.cpp"
+			<Filter
+				Name="algorithm"
 				>
-			</File>
-			<File
-				RelativePath=".\Inc\SystemUtility.h"
+				<File
+					RelativePath=".\Inc\algorithm\Data_Double_Link_Node.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\algorithm\String.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="audio"
 				>
-			</File>
-			<File
-				RelativePath=".\Inc\ThreadEx.cpp"
+				<File
+					RelativePath=".\Inc\audio\Wave.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\audio\Wave.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="common"
 				>
-			</File>
-			<File
-				RelativePath=".\Inc\ThreadEx.h"
+				<File
+					RelativePath=".\Inc\common\Character.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Character.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\CommonFun.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\CommonFun.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Console.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Console.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Container.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Container.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Directory.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Directory.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\DtoR.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\ETSLayout.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\ETSLayout.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\File.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\File.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\Global.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\IniFile.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\IniFile.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\PEFile.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\PEFile.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\ResizableDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\ResizableDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\ResizeCtrl.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\common\ResizeCtrl.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="database"
 				>
-			</File>
-			<File
-				RelativePath=".\Inc\Wave.cpp"
+			</Filter>
+			<Filter
+				Name="network"
 				>
-			</File>
-			<File
-				RelativePath=".\Inc\Wave.h"
+			</Filter>
+			<Filter
+				Name="system"
 				>
-			</File>
+				<File
+					RelativePath=".\Inc\system\Driver.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\system\Driver.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\system\SystemUtility.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\system\SystemUtility.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\system\ThreadEx.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\system\ThreadEx.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="video"
+				>
+				<File
+					RelativePath=".\Inc\video\Picture.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Inc\video\Picture.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Control"

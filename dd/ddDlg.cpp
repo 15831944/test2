@@ -10,7 +10,7 @@ static char THIS_FILE[] = __FILE__;
   
 /////////////////////////////////////////////////////////////////////////////
 //
-class CAboutDlg : public CDialog
+class CAboutDlg : public CResizableDialog
 {
 public:
 	CAboutDlg();
@@ -19,11 +19,11 @@ public:
 	enum { IDD = IDD_ABOUTBOX };
 
 protected:
-	virtual void			DoDataExchange(CDataExchange* pDX);   
+	virtual void			DoDataExchange(CDataExchange* pDX);
+	virtual BOOL			OnInitDialog();
 
-protected:
-	afx_msg void			OnClose();
 	afx_msg void			OnPaint();
+	afx_msg void			OnSize(UINT nType, int cx, int cy);
 	afx_msg void			OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
 
 	afx_msg void			OnLButtonDown(UINT nFlags, CPoint point);
@@ -32,31 +32,78 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 protected:
-	CImageList				m_imgDrag;
+	void					AdjustChildWndSize();
+
+protected:
+	BOOL					m_bInited;
 	BOOL					m_bIsLButtonDown;
+
 	POINT					m_ptOffset,m_ptMove;
+	CImageList				m_imgDrag;
+
+	//CResizeCtrl			m_hResizeCtrl;
 };
 
-CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD)
+CAboutDlg::CAboutDlg() : CResizableDialog(CAboutDlg::IDD)
 {
+	m_bInited			= FALSE;
 	m_bIsLButtonDown	= FALSE;
+
 	m_ptOffset.x		= 0;
 	m_ptOffset.y		= 0;
 }
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+	CResizableDialog::DoDataExchange(pDX);
 }
 
-BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
-	ON_WM_CLOSE()
+BEGIN_MESSAGE_MAP(CAboutDlg, CResizableDialog)
 	ON_WM_PAINT()
 	ON_WM_ACTIVATE()
+
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
+
+BOOL CAboutDlg::OnInitDialog()
+{
+	CResizableDialog::OnInitDialog();
+
+#if 0
+	CreateRoot(VERTICAL)
+		<< item(IDC_BUTTON1, GREEDY)
+		<< item(IDC_BUTTON2, GREEDY);
+	UpdateLayout();
+#endif
+
+#if 0
+	m_hResizeCtrl.Create(this, FALSE);
+	m_hResizeCtrl.SetEnabled(TRUE);
+
+	CResizeInfo hSizeInfo[] = 
+	{
+		{IDC_BUTTON1, 0, 0, 100, 50},
+		{IDC_BUTTON2, 0, 50, 100, 50},
+		{0},
+	};
+	m_hResizeCtrl.Add(hSizeInfo);
+	m_hResizeCtrl.SetMinimumTrackingSize();
+#endif
+
+#if 0
+	ShowSizeGrip(FALSE);
+	AddAnchor( IDC_BUTTON1, MIDDLE_CENTER, MIDDLE_CENTER );
+	AddAnchor( IDC_BUTTON2, MIDDLE_CENTER, MIDDLE_CENTER );
+#endif
+
+	m_bInited = TRUE;
+	MoveWindow(0, 0, 1024, 768);
+
+	CenterWindow();
+	return TRUE;
+}
 
 void CAboutDlg::OnPaint() 
 {
@@ -77,15 +124,21 @@ void CAboutDlg::OnPaint()
 	delete	pMemDC;
 }
 
-void CAboutDlg::OnClose() 
+void CAboutDlg::OnSize(UINT nType, int cx, int cy)
 {
-	CDialog::OnClose();
-}
+	CResizableDialog::OnSize(nType, cx, cy);
 
+	if (!m_bInited)
+	{
+		return;
+	}
+
+	AdjustChildWndSize();
+}
 
 void CAboutDlg::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized) 
 {
-	CDialog::OnActivate(nState, pWndOther, bMinimized);
+	CResizableDialog::OnActivate(nState, pWndOther, bMinimized);
 	
 	if(nState==WA_INACTIVE)
 	{
@@ -124,8 +177,6 @@ void CAboutDlg::OnLButtonDown(UINT nFlags, CPoint point)
 		m_ptOffset.x	= ptPut.x-rectPic.left;
 		m_ptOffset.y	= ptPut.y-rectPic.top;
 		
-		
-		
 		m_imgDrag.DeleteImageList();
 		m_imgDrag.Create(rectPic.Width(), rectPic.Height(), ILC_COLOR32|ILC_MASK, 0, 1);
 		m_imgDrag.Add(&bitmapTemp, RGB(0, 0, 0));
@@ -135,7 +186,7 @@ void CAboutDlg::OnLButtonDown(UINT nFlags, CPoint point)
 		SetCapture();
 	}
 
-	CDialog::OnLButtonDown(nFlags, point);
+	CResizableDialog::OnLButtonDown(nFlags, point);
 }
 
 void CAboutDlg::OnLButtonUp(UINT nFlags, CPoint point) 
@@ -156,7 +207,7 @@ void CAboutDlg::OnLButtonUp(UINT nFlags, CPoint point)
 		pPic->Invalidate();
 	}
 
-	CDialog::OnLButtonUp(nFlags, point);
+	CResizableDialog::OnLButtonUp(nFlags, point);
 }
 
 void CAboutDlg::OnMouseMove(UINT nFlags, CPoint point) 
@@ -182,7 +233,22 @@ void CAboutDlg::OnMouseMove(UINT nFlags, CPoint point)
 		
 		CImageList::DragMove(m_ptMove);
 	}
-	CDialog::OnMouseMove(nFlags, point);
+
+	CResizableDialog::OnMouseMove(nFlags, point);
+}
+
+void CAboutDlg::AdjustChildWndSize()
+{
+	int nWndCtrlId = 0;
+
+	HWND  hWndChild=::GetWindow(m_hWnd,GW_CHILD);
+	while(hWndChild)
+	{
+		nWndCtrlId = ::GetDlgCtrlID(hWndChild);
+		AddAnchor(nWndCtrlId, MIDDLE_CENTER, MIDDLE_CENTER);
+
+		hWndChild=::GetWindow(hWndChild, GW_HWNDNEXT);
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -383,7 +449,6 @@ void CDdDlg::InitSubDlg()
  	m_pArPage.Add(&m_Page2);
  	m_pArPage.Add(&m_Page3);
 	m_pArPage.Add(&m_Page4);
-
 
 	CRect rcStatic;	
 	CRect rcDialog;
