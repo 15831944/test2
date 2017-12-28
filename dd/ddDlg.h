@@ -14,6 +14,10 @@
 #include "Control/CButton/xSkinButton.h"
 #include "Control/CWnd/dialogheader.h"
 
+#include "./Inc/common/ETSLayout.h"
+#include "./Inc/common/ResizeCtrl.h"
+#include "./Inc/common/ResizableDialog.h"
+
 using namespace std;
 ////////////////////////////////////////////////////////////////////////////
 //

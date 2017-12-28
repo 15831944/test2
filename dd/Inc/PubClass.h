@@ -33,6 +33,8 @@
 
 #include "MemDC.h"
 #include "SaveDC.h"
-#include "Picture.h"
+
+#include "./video/Picture.h"
+#include "./common/Character.h"
 
 #endif

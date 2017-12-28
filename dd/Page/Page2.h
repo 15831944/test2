@@ -6,8 +6,8 @@
 #endif // _MSC_VER > 1000
 
 #include "Page.h"
-#include "../Inc/String.h"
-#include "../Inc/Console.h"
+#include "../Inc/algorithm/String.h"
+#include "../Inc/common/Console.h"
 
 using namespace Leaf::String;
 using namespace Leaf::Console;

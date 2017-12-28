@@ -1,7 +1,7 @@
 #ifndef __COMPASS_H__
 #define __COMPASS_H__
 
-#include "../../Inc/DtoR.h"
+#include "../../Inc/common/DtoR.h"
 
 #define  COMPASS_CLASS_NAME		_T("CompassWnd")
 
