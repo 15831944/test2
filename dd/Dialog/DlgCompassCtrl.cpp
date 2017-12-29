@@ -43,7 +43,7 @@ BOOL CDlgCompassCtrl::OnInitDialog()
 	{
 		return FALSE;
 	}
-
+;
 	return TRUE; 
 }
 
